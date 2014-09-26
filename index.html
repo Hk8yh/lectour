@@ -12,14 +12,15 @@
 	<link href="css/main.css" rel="stylesheet" type="text/css" />
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 	<script type="text/javascript" src="js/jmpress.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/lectour.js"></script>
 </head>
 <body>
 
 <div id="slides">
 	<div id="home" class="step">
-		<p>Hello! My name is jmpress.js...</p>
+		<p>Hello! My name is jmpress.js... <span id="p1" class="help"></span></p>
 	</div>
 	<div class="step" data-x="1000">
 		<p>and this is a really simple demo.</p>
@@ -36,12 +37,7 @@
     <p>Use arrow keys to navigate</p>
 </div>
 
-<script type="text/javascript">
-$(function() {
-	$('#slides').jmpress();
-  lectour.init();
-});
-</script>
+<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>
