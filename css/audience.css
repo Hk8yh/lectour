@@ -98,14 +98,14 @@ html {
     }
 
         #question menu a {
-            font-family: "GothamLight", "Gotham Light", Gotham;
+            font-family: "GothamLight", Gotham, serif;
             font-size: 14px;
             color: #435059;
         }
 
         #question menu a:last-child {
             float: right;
-            font-family: "GothamMedium", "Gotham Medium", Gotham;
+            font-family: "GothamMedium", Gotham, serif;
         }
 
 /* history */
@@ -179,7 +179,7 @@ article.content li {
         box-sizing: border-box;
         font-size: 12px;
         margin-right: 8px;
-        font-family: "GothamBook", "Gotham Book", Gotham;
+        font-family: "GothamBook", Gotham, serif;
         position: relative;
         top: 3px;
         -webkit-transition: width;
@@ -212,7 +212,7 @@ article.content li {
     }
 
     article.content li p {
-        font-family: "GothamBook", "Gotham Book", Gotham;
+        font-family: "GothamBook", Gotham, serif;
         font-size: 16px;
         line-height: 18px;
     }

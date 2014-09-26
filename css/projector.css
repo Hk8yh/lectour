@@ -84,7 +84,7 @@ article.column section:first-child h1 {
 article.content ol li h1 {
     font-size: 60px;
     line-height: 120px;
-    font-family: "GothamMedium", "Gotham Medium", Gotham;
+    font-family: "GothamMedium", Gotham, serif;
     color: #333;
 }
 

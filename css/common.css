@@ -13,7 +13,7 @@ a {
 }
 
 h1 {
-    font-family: "GothamBold", "Gotham Bold", Gotham;
+    font-family: "GothamBold", Gotham, serif;
     font-weight: normal;
     line-height: 1.3em;
 }
@@ -32,7 +32,7 @@ article.title h1 {
 article.title li span {
     color: #f1edec;
     background-color: #435059;
-    font-family: "GothamBold", "Gotham Bold", Gotham;
+    font-family: "GothamBold", Gotham, serif;
     text-align: right;
     line-height: 1.2em;
     display: inline-block;
