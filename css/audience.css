@@ -182,7 +182,7 @@ article.content li {
         margin-right: 8px;
         font-family: "GothamBook", Gotham, serif;
         position: relative;
-        top: 3px;
+        top: 4px;
         -webkit-transition: width;
         transition: width;
         overflow: hidden;
@@ -234,9 +234,15 @@ article.column section:first-child h1 {
     left: 0px;
     right: 0px;
     padding-left: 20px;
+    background-color: transparent !important;
+    color: #333 !important;
 }
 
 article.column section:last-child {
     padding-top: 60px;
+}
+
+article.column section:last-child h1 {
+    color: #333 !important;
 }
 
