@@ -25,7 +25,7 @@ io.on('connection', function(socket){
 
   function error_log(msg) {
     console.log('error:' + msg);
-  };
+  }
   client.on('error', error_log);
   subscriber.on('error', error_log);
 

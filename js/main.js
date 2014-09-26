@@ -1,9 +1,8 @@
-
 $(function() {
-  var mode = document.URL.split('#')[0].split('/').pop();
+  var mode = location.pathname.substr(1);
   lectour.init(mode, '#slides');
 
-	$('#slides').jmpress();
+  $('#slides').jmpress();
 
   $('.step').on('enterStep', function(event) {
     if (mode === 'presenter') {
@@ -30,5 +29,4 @@ $(function() {
   $('#slides').on('lt:presenter:goto', function(event, slide) {
     $('#slides').jmpress('goTo', '#' + slide);
   });
-
 });
