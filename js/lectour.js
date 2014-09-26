@@ -46,15 +46,15 @@ lectour.inc = function(sel, type, tell) {
 };
 
 lectour.hget = function(sel, type, item) {
-  lectour.send('hget', sel, type);
+  lectour.send('hget', sel, type, item);
 };
 
 lectour.hset = function(sel, type, item, value, tell) {
   lectour.send('hset', sel, type, item, value, tell);
 };
 
-lectour.hinc = function(sel, type, item, tell) {
-  lectour.send('hinc', sel, type, item, tell);
+lectour.hincr = function(sel, type, item, tell) {
+  lectour.send('hincr', sel, type, item, tell);
 };
 
 lectour.hitems = function(sel, type) {

@@ -9,7 +9,7 @@
 
   <link href="css/main.css" rel="stylesheet" type="text/css" />
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="js/jmpress.js"></script>
   <script type="text/javascript" src="js/lectour.js"></script>
@@ -17,16 +17,27 @@
 <body>
 
 <div id="slides">
-  <div id="home" class="step">
+  <div id="slide-1" class="step">
     <p>Hello! My name is jmpress.js... <span id="p1" class="help"></span></p>
   </div>
-  <div class="step" data-x="1000">
-    <p>and this is a really simple demo.</p>
+  <div id="slide-2" class="step" data-x="1000">
+    <ul>
+      <li>Some bullet points</li>
+      <li>Some bullet points</li>
+    </ul>
   </div>
-  <div class="step" data-x="2000">
-    <p>You might think it is boring...</p>
+  <div id="slide-3" class="step" data-x="2000">
+    <p>Poll: what is your favourite programming language?</p>
+    <ul id="poll-fav-language" data-lt-multichoice>
+      <li>C</li>
+      <li>C++</li>
+      <li>Java</li>
+      <li>JavaScript</li>
+      <li>Ruby</li>
+      <li>Python</li>
+    </ul>
   </div>
-  <div class="step" data-x="3000">
+  <div id="slide-4" class="step" data-x="3000">
     <p>but that is the point. This is a simple example.</p>
   </div>
 </div>

@@ -82,7 +82,7 @@ io.on('connection', function(socket){
   });
 
   socket.on('get', function(id, type) {
-    var key = id + ' ' + type;
+    var key = id + ':' + type;
     console.log('socket:get', key);
 
     client.get(key, function(err, reply) {
@@ -92,7 +92,7 @@ io.on('connection', function(socket){
   });
 
   socket.on('set', function(id, type, val, tell) {
-    var key = id + ' ' + type;
+    var key = id + ':' + type;
     console.log('socket:set', key, val, tell);
 
     client.set(key, val, function(err, reply) {
@@ -102,7 +102,7 @@ io.on('connection', function(socket){
   });
 
   socket.on('inc', function(id, type, tell) {
-    var key = id + ' ' + type;
+    var key = id + ':' + type;
     console.log('socket:inc', key, tell);
 
     client.incr(key, function(err, reply) {
@@ -112,7 +112,7 @@ io.on('connection', function(socket){
   });
 
   socket.on('hget', function(id, type, item) {
-    var key = id + ' ' + type;
+    var key = id + ':' + type;
     console.log('socket:hget', key, item);
 
     client.hget(key, item, function(err, reply) {
@@ -122,7 +122,7 @@ io.on('connection', function(socket){
   });
 
   socket.on('hset', function(id, type, item, val, tell) {
-    var key = id + ' ' + type;
+    var key = id + ':' + type;
     console.log('socket:hset', key, val, tell);
 
     client.hset(key, item, val, function(err, reply) {
@@ -131,18 +131,18 @@ io.on('connection', function(socket){
     });
   });
 
-  socket.on('hinc', function(id, type, item, tell) {
-    var key = id + ' ' + type;
-    console.log('socket:hinc', key, item, tell);
+  socket.on('hincr', function(id, type, item, tell) {
+    var key = id + ':' + type;
+    console.log('socket:hincr', key, item, tell);
 
     client.hincrby(key, item, 1, function(err, reply) {
-      console.log('redis:hincrby', key, item, 1, err, reply);
+      console.log('redis:hincr', key, item, 1, err, reply);
       notify(id, type, item, reply, err, tell);
     });
   });
 
   socket.on('hitems', function(id, type) {
-    var key = id + ' ' + type;
+    var key = id + ':' + type;
     console.log('socket:hget', key);
 
     client.hgetall(key, function(err, reply) {
