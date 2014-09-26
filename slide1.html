@@ -8,7 +8,7 @@
     </head>
     <body>
         <main>
-            <article id="slide-title" class="title right" style="background-image: url(images/sh5.jpg);">
+            <article id="slide-title" class="title right" style="background-image: url(images/sh5.jpg); display: none">
                 <section>
                     <h1><span class="pe-7s-map"></span>Lectour</h1>
                     <ul>
@@ -18,10 +18,10 @@
                     </ul>
                 </section>
             </article>
-            <article id="slide-aims" class="content column" style="background-color: #fad45f; display: none">
+            <article id="slide-aims" class="content column" style="background-color: #fad45f;">
                 <div>
                     <section>
-                        <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px;">Aims</h1>
+                        <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #fad45f">Aims</h1>
                     </section>
                     <section>
                         <ol>
@@ -69,6 +69,8 @@
             document.write('<link rel="stylesheet" href="css/' + mode + '.css">');
 
             function moveToNextSlide() {
+                if (!nextSlide)
+                    return;
                 $('#' + currentSlide).fadeOut(1000);
                 $('#' + nextSlide).fadeIn(1000);
                 currentSlide = nextSlide;
