@@ -17,7 +17,7 @@ lectour.init = function(mode, el) {
 
   lectour.socket.on('up', function(sel, type, item, value) {
     console.log('update', sel, type, item, value);
-    $(sel).trigger('lt:up:' + type, item, value);
+    $(sel).trigger('lt:up:' + type, [item, value]);
   });
 };
 
