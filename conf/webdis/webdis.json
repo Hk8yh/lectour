@@ -27,5 +27,5 @@
   ],
 
   "verbosity": 6,
-  "logfile": "webdis.log"
+  "logfile": "/home/ubuntu/lectour/webdis.log"
 }
