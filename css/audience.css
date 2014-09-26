@@ -14,7 +14,7 @@ html {
     height: 40px;
     left: 0px;
     right: 0px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(240, 240, 240, 0.8);
     opacity: 1.0;
     -webkit-transition: opacity 0.3s;
     transition: opacity 0.3s;
@@ -124,6 +124,7 @@ main {
         transition: -webkit-transform 0.3s;
         transition: transform 0.3s;
         overflow: auto;
+        background-color: white !important;
     }
 
     body.show-history main article {
@@ -169,8 +170,8 @@ article.content li {
 
     article.content ol li h1 aside {
         display: inline-block;
-        background-color: white;
-        color: #444;
+        background-color: #333;
+        color: white;
         border-radius: 22px;
         width: 22px;
         height: 22px;
@@ -221,8 +222,21 @@ article.column section:first-child h1 {
     font-size: 30px;
     line-height: 35px;
     height: 1em !important;
+    width: auto !important;
     line-height: 1em !important;
     margin-bottom: 25px;
-    margin-top: 10px;
+    padding-top: 20px;
+    border-top-style: solid;
+    border-top-width: 5px;
+    border-radius: 0px !important;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    padding-left: 20px;
+}
+
+article.column section:last-child {
+    padding-top: 60px;
 }
 
