@@ -30,7 +30,6 @@ io.on('connection', function(socket){
   subscriber.on('error', error_log);
 
   function notify(id, type, item, val, err, tell) {
-    console.log(tell);
     if (err === null && tell) {
       tell.forEach(function(channel) {
         var msg = {cmd: 'up', id: id, type: type, item: item, val: val};
