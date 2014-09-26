@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="fonts/pe-icon-7-stroke/font.css">
+    </head>
+    <body>
+        <main>
+            <article id="slide-title" class="title right" style="background-image: url(images/sh5.jpg); display: none">
+                <section>
+                    <h1><span class="pe-7s-map"></span>Lectour</h1>
+                    <ul>
+                        <li><span>James</span></li>
+                        <li><span>Tim</span></li>
+                        <li><span>Will</span></li>
+                    </ul>
+                </section>
+            </article>
+            <article id="slide-aims" class="content column" style="background-color: #fad45f">
+                <div>
+                    <section>
+                        <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px;">Aims</h1>
+                    </section>
+                    <section>
+                        <ol>
+                            <li class="topic-interactivity">
+                                <h1><aside><span></span><i class="pe-7s-check"></i></aside>Interactivity</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi felis, suscipit id vestibulum at, commodo sed urna. Phasellus cursus auctor felis, ut finibus velit bibendum in.</p>
+                            </li>
+                            <li class="topic-engagement">
+                                <h1><aside><span></span><i class="pe-7s-check"></i></aside>Engagement</h1>
+                                <p>Vestibulum ac augue leo. Sed finibus non libero non commodo. Integer elementum risus vitae neque tincidunt tristique. Praesent blandit, nisi et malesuada placerat, nibh ipsum pretium diam, nec fermentum velit ex in felis.</p>
+                            </li>
+                            <li class="topic-feedback">
+                                <h1><aside><span></span><i class="pe-7s-check"></i></aside>Feedback</h1>
+                                <p>Cras lacinia tortor id est volutpat molestie. Aenean a interdum arcu, ac interdum sem.</p>
+                            </li>
+                        </ol>
+                    </section>
+                </div>
+            </article>
+        </main>
+
+        <div id="question" style="display: none">
+            <div><textarea></textarea></div>
+            <menu>
+                <a href="#" id="hide-question">Cancel</a>
+                <a href="#" id="submit-question">Submit</a>
+            </menu>
+        </div>
+
+        <menu id="actions">
+            <div id="right-buttons">
+                <a href="#" class="pe-7s-light"></a>
+                <a href="#" class="pe-7s-comment" id="show-question"></a>
+            </div>
+            <a href="#" class="pe-7s-map" id="show-history"></a>
+        </menu>
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script>
+            var currentSlide = 'slide-title';
+            var nextSlide = 'slide-aims';
+            var mode = 'audience';
+
+            // lazy way to include the correct css so I don't need to change two lines...
+            document.write('<link rel="stylesheet" href="css/' + mode + '.css">');
+
+            function moveToNextSlide() {
+                $('#' + currentSlide).fadeOut(1000);
+                $('#' + nextSlide).fadeIn(1000);
+                currentSlide = nextSlide;
+                nextSlide = null;
+            }
+
+            $('article.content ol li h1').click(function() {
+                $(this).addClass('clicked');
+            })
+
+            $('#show-question').click(function(event) {
+                event.preventDefault();
+                $('#question textarea').val('');
+                $('#question').fadeIn();
+            });
+
+            $('#hide-question').click(function(event) {
+                event.preventDefault();
+                $('#question').fadeOut();
+            });
+
+            $('#submit-question').click(function(event) {
+                event.preventDefault();
+                $('#question').fadeOut();
+            });
+
+            $('#show-history').click(function(event) {
+                event.preventDefault();
+                $('body').addClass('show-history');
+            });
+
+            $('main article').click(function() {
+                event.stopImmediatePropagation();
+
+                if (mode == 'audience') {
+                    if ($('body').hasClass('show-history'))
+                        $('body').removeClass('show-history');
+                    //else
+                        //moveToNextSlide();
+                } else if (mode == 'projector') {
+                    moveToNextSlide();
+                }
+            });
+        </script>
+    </body>
+</html>

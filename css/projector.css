@@ -1,0 +1,98 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* hide ui */
+#actions {
+    display: none;
+}
+
+#question {
+    display: none;
+}
+
+
+/* slides */
+article section {
+}
+
+h1 {
+    font-size: 80px;
+}
+
+    h1 [class^="pe-7s-"] {
+        top: 7px;
+        margin-right: 20px;
+    }
+
+
+/* titles */
+article.title.right section {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    text-align: right;
+}
+
+article.title h1 {
+    padding: 10px 30px 10px 30px;
+    margin-bottom: 30px;
+}
+
+article.title li span {
+    font-size: 38px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+
+/* 2 column layout */
+article.column > div {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+article.column section {
+    display: table-cell;
+    width: 50%;
+}
+
+article.column section:first-child {
+    text-align: center;
+    vertical-align: middle;
+}
+
+article.column section:last-child {
+    vertical-align: middle;
+}
+
+article.column section:first-child h1 {
+    background-color: white;
+    color: #435059;
+    display: inline-block;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0px;
+    margin: 0px auto;
+}
+
+
+/* content */
+article.content ol li h1 {
+    font-size: 60px;
+    line-height: 120px;
+    font-family: "GothamMedium", "Gotham Medium", Gotham;
+    color: #333;
+}
+
+    article.content ol li h1 aside {
+        display: none;
+    }
+
+article.content li p {
+    display: none;
+}
+

@@ -1,0 +1,39 @@
+article {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-family: "GothamBold", "Gotham Bold", Gotham;
+    font-weight: normal;
+    line-height: 1.3em;
+}
+
+article.title h1 {
+    background-color: #f1edec;
+    color: #435059;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+    h1 [class^="pe-7s-"] {
+        position: relative;
+    }
+
+article.title li span {
+    color: #f1edec;
+    background-color: #435059;
+    font-family: "GothamBold", "Gotham Bold", Gotham;
+    text-align: right;
+    line-height: 1.2em;
+    display: inline-block;
+}
