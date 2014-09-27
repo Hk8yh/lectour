@@ -14,10 +14,6 @@ lectour.init = function(mode, sel) {
   $('body').append($('<link rel="stylesheet" href="/css/' + mode + '.css">'));
 
   // bind top-level events
-  $('article.content ol li h1').click(function() {
-    $(this).addClass('clicked');
-  });
-
   $('#show-question').click(function(event) {
     event.preventDefault();
     $('#question textarea').val('');
