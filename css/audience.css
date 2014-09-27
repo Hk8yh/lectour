@@ -14,7 +14,7 @@ html {
     height: 40px;
     left: 0px;
     right: 0px;
-    background-color: rgba(240, 240, 240, 0.8);
+    background-color: rgba(240, 240, 240, 0.90);
     opacity: 1.0;
     -webkit-transition: opacity 0.3s;
     transition: opacity 0.3s;
@@ -115,7 +115,7 @@ main {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-color: #777;
+    background-color: #f6f8f8;
 }
 
     main article {
@@ -123,7 +123,6 @@ main {
         -webkit-transition: -webkit-transform 0.3s;
         transition: -webkit-transform 0.3s;
         transition: transform 0.3s;
-        overflow: auto;
         background-color: white !important;
     }
 
@@ -134,13 +133,37 @@ main {
 
 
 /* ----------------------- */
-/* slides                  */
+/* topic actions           */
 /* ----------------------- */
-article.content {
-    padding: 20px 20px 60px 20px;
-    counter-reset: item;
+#topic-actions {
+    position: absolute;
+    height: 30px;
+    top: 55px;
+    left: 10px;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
 }
 
+    #topic-actions a {
+        vertical-align: middle;
+        display: table-cell;
+        font-size: 14px;
+        text-align: center;
+        color: #34545a;
+        font-family: "GothamBook", Gotham, serif;
+        width: 1%;
+    }
+
+        #topic-actions a span {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+/* ----------------------- */
+/* slides                  */
+/* ----------------------- */
 article.title h1 {
     font-size: 30px;
     padding: 10px 20px 10px 20px;
@@ -159,8 +182,22 @@ article.title li span {
 }
 
 article.content li {
-    margin-bottom: 20px;
-    counter-increment: item;
+    margin-bottom: 25px;
+    position: relative;
+    -webkit-transition: -webkit-filter 0.3s;
+    transition: filter 0.3s;
+    transition: -webkit-filter 0.3s;
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+}
+
+article.content li.tapped {
+    -webkit-filter: blur(10px);
+    filter: blur(8px);
+}
+
+article.content li:first-child {
+    padding-top: 10px;
 }
 
     article.content li h1 {
@@ -168,66 +205,24 @@ article.content li {
         font-size: 17px;
     }
 
-    article.content ol li h1 aside {
-        display: inline-block;
-        background-color: #333;
-        color: white;
-        border-radius: 22px;
-        width: 22px;
-        height: 22px;
-        line-height: 22px;
-        padding-left: 7px;
-        box-sizing: border-box;
-        font-size: 12px;
-        margin-right: 8px;
-        font-family: "GothamBook", Gotham, serif;
-        position: relative;
-        top: 4px;
-        -webkit-transition: width;
-        transition: width;
-        overflow: hidden;
-    }
-
-    article.content ol li h1.clicked aside {
-        width: 41px;
-    }
-
-    article.content ol li h1 aside span {
-        display: inline-block;
-    }
-
-    article.content ol li h1 aside span:before {
-        content: counter(item);
-    }
-
-    article.content ol li h1 aside i {
-        display: none;
-        margin-left: 7px;
-        font-size: 16px;
-        position: relative;
-        top: 3px;
-    }
-
-    article.content ol li h1.clicked aside i {
-        display: inline-block;
-    }
-
     article.content li p {
-        font-family: "GothamBook", Gotham, serif;
-        font-size: 16px;
-        line-height: 18px;
+        font-family: "GothamLight", Gotham, serif;
+        font-size: 15px;
+        line-height: 24px;
+        color: #777;
     }
 
 article.column section:first-child h1 {
+    font-family: "GothamMedium", Gotham, serif;
     font-size: 30px;
     line-height: 35px;
     height: 1em !important;
     width: auto !important;
     line-height: 1em !important;
-    margin-bottom: 25px;
-    padding-top: 20px;
+    margin-bottom: 35px;
+    padding-top: 35px;
     border-top-style: solid;
-    border-top-width: 5px;
+    border-top-width: 8px;
     border-radius: 0px !important;
     position: absolute;
     top: 0px;
@@ -236,13 +231,22 @@ article.column section:first-child h1 {
     padding-left: 20px;
     background-color: transparent !important;
     color: #333 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px
 }
 
 article.column section:last-child {
-    padding-top: 60px;
+    overflow: auto;
+    position: absolute;
+    top: 90px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding: 0px 20px 30px 20px;
 }
 
 article.column section:last-child h1 {
     color: #333 !important;
+    font-family: "GothamBook", Gotham, serif;
 }
 

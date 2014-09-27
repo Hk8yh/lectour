@@ -25,16 +25,21 @@
                     </section>
                     <section>
                         <ol>
-                            <li class="topic-interactivity">
-                                <h1 style="color: #fff"><aside><span></span><i class="pe-7s-check"></i></aside>Interactivity</h1>
+                            <li class="topic topic-interactivity">
+                                <h1 style="color: #fff">Interactivity</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi felis, suscipit id vestibulum at, commodo sed urna. Phasellus cursus auctor felis, ut finibus velit bibendum in.</p>
                             </li>
-                            <li class="topic-engagement">
-                                <h1 style="color: #fff"><aside><span></span><i class="pe-7s-check"></i></aside>Engagement</h1>
+                            <menu id="topic-actions" style="display: none">
+                                <a href="#"><span class="pe-7s-light" id="more-topic"></span>More</a>
+                                <a href="#"><span class="pe-7s-comment" id="show-questions"></span>Question</a>
+                                <a href="#"><span class="pe-7s-pin" id="pin-topic"></span>Pin</a>
+                            </menu>
+                            <li class="topic topic-engagement">
+                                <h1 style="color: #fff">Engagement</h1>
                                 <p>Vestibulum ac augue leo. Sed finibus non libero non commodo. Integer elementum risus vitae neque tincidunt tristique. Praesent blandit, nisi et malesuada placerat, nibh ipsum pretium diam, nec fermentum velit ex in felis.</p>
                             </li>
-                            <li class="topic-feedback">
-                                <h1 style="color: #fff"><aside><span></span><i class="pe-7s-check"></i></aside>Feedback</h1>
+                            <li class="topic topic-feedback">
+                                <h1 style="color: #fff">Feedback</h1>
                                 <p>Cras lacinia tortor id est volutpat molestie. Aenean a interdum arcu, ac interdum sem.</p>
                             </li>
                         </ol>
@@ -53,8 +58,7 @@
 
         <menu id="actions">
             <div id="right-buttons">
-                <a href="#" class="pe-7s-light"></a>
-                <a href="#" class="pe-7s-comment" id="show-question"></a>
+                <a href="#" class="pe-7s-monitor"></a>
             </div>
             <a href="#" class="pe-7s-map" id="show-history"></a>
         </menu>
@@ -77,9 +81,45 @@
                 nextSlide = null;
             }
 
-            $('article.content ol li h1').click(function() {
-                $(this).addClass('clicked');
-            })
+            var targetTopic = null;
+
+            $('article.content ol li.topic').click(function(event) {
+                if ($('body').hasClass('show-history'))
+                    return;
+                
+                var topic = $(this);
+                var section = topic.closest('section');
+                if (targetTopic)
+                    targetTopic.removeClass('tapped');
+                topic.addClass('tapped');
+                
+                $('#topic-actions').css('top', topic.position().top + section.scrollTop());
+                $('#topic-actions').css('height', topic.height());
+                $('#topic-actions').fadeIn();
+
+                targetTopic = topic;
+                event.stopImmediatePropagation();
+            });
+
+            $('#more-topic').click(function(event) {
+
+            });
+
+            $('#show-questions').click(function(event) {
+
+            });
+
+            $('#pin-topic').click(function(event) {
+
+            });
+
+            $('article, #actions').on('click', function(event) {
+                if (!targetTopic)
+                    return;
+                targetTopic.removeClass('tapped');
+                $('#topic-actions').fadeOut();
+                targetTopic = null;
+            });
 
             $('#show-question').click(function(event) {
                 event.preventDefault();
