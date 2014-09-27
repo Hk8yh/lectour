@@ -1,6 +1,6 @@
 html {
-    /*width: 320px;
-    height: 568px;*/
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 
@@ -313,7 +313,7 @@ article.column section:last-child h1 {
     cursor: pointer;
 }
 
-[data-lt-poll-count]::after {
+[data-lt-poll-count]::before {
     content: attr(data-lt-poll-count);
     display: inline-block;
     background-color: #933;
@@ -328,6 +328,11 @@ article.column section:last-child h1 {
     font-family: "GothamBook", Gotham, serif;
     overflow: hidden;
     text-align: center;
+    margin-right: 10px;
+}
+
+[data-lt-poll-count] {
+min-width: 250px;
 }
 
 [data-lt-help-count]::after {
@@ -350,4 +355,13 @@ article.column section:last-child h1 {
 
 img.projector-only {
     display: none;
+}
+
+#poll-hate-lectures, #poll-love-ssh {
+  padding-right: 0px;
+  width: 100%;
+}
+
+#poll-hate-lectures li, #poll-love-ssh li {
+  width: 100%;
 }

@@ -141,3 +141,8 @@ article.content li p {
     overflow: hidden;
     text-align: center;
 }
+
+article.content p {
+    display: none;
+}
+

@@ -96,39 +96,36 @@ lectour.init = function(mode) {
   });
 
   function showHideHistoryNavButtons() {
-    var current = $('article.current');
-    var index = lectour.slideIDs.indexOf(current[0].id);
-    if (index == 0)
+    if (lectour.slideNum == 0)
       $('#history-prev').hide();
     else
       $('#history-prev').show();
-    if (index == (lectour.slideIDs.length - 1))
+    if (lectour.slideNum == (lectour.slideIDs.length - 1))
       $('#history-next').hide();
     else
       $('#history-next').show();
   }
 
   $('#history-next').click(function(event) {
+    console.log(lectour.slideIDs);
     event.preventDefault();
-    var current = $('article.current');
-    var index = lectour.slideIDs.indexOf(current[0].id);
-    if (index == (lectour.slideIDs.length - 1))
+    if (lectour.slideNum == (lectour.slideIDs.length - 1))
       return;
-    var nextSlide = $('#' + lectour.slideIDs[index + 1]);
+    var nextSlide = $('#' + lectour.slideIDs[lectour.slideNum + 1]);
     nextSlide.addClass('current');
-    current.removeClass('current');
+    $('#' + lectour.slideIDs[lectour.slideNum]).removeClass('current');
+    lectour.slideNum += 1;
     showHideHistoryNavButtons();
   });
 
   $('#history-prev').click(function(event) {
     event.preventDefault();
-    var current = $('article.current');
-    var index = lectour.slideIDs.indexOf(current[0].id);
-    if (index == 0)
+    if (lectour.slideNum == 0)
       return;
-    var prevSlide = $('#' + lectour.slideIDs[index - 1]);
+    var prevSlide = $('#' + lectour.slideIDs[lectour.slideNum - 1]);
     prevSlide.addClass('current');
-    current.removeClass('current');
+    $('#' + lectour.slideIDs[lectour.slideNum]).removeClass('current');
+    lectour.slideNum -= 1;
     showHideHistoryNavButtons();
   });
 
@@ -221,7 +218,9 @@ lectour.hiter = function(sel, type) {
 lectour.moveSlideDelta = function(delta) {
   var nextSlideNum = (lectour.slideNum + lectour.slideIDs.length + delta) % lectour.slideIDs.length;
   $('#' + lectour.slideIDs[lectour.slideNum]).fadeOut(1000);
+  $('#' + lectour.slideIDs[lectour.slideNum]).removeClass('current');
   $('#' + lectour.slideIDs[nextSlideNum]).fadeIn(1000);
+  $('#' + lectour.slideIDs[nextSlideNum]).addClass('current');
   lectour.slideNum = nextSlideNum;
 
   if (lectour.mode === 'presenter') {
