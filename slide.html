@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/common.css">
   </head>
-  <body>
+  <body class="show-history">
     <!--
     ===============================================================================================
     slides
     ===============================================================================================
     -->
     <main id="slides">
-      <article data-lt-slide id="slide-title" class="title right" style="background-image: url(/images/sh5.jpg)">
+      <article data-lt-slide id="slide-title" class="title right current" style="background-image: url(/images/sh5.jpg)">
         <section>
           <h1><span class="pe-7s-map"></span>Lectour</h1>
           <ul>
@@ -30,7 +30,7 @@
         </section>
       </article>
 
-      <article data-lt-slide id="slide-aims" class="content column" style="background-color: #f4af48; display: none">
+      <article data-lt-slide id="slide-aims" class="content column" style="background-color: #f4af48;">
         <div>
           <section>
             <h1 style="background-color: #0d2e3c; color: #fff; width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #f4af48">Aims</h1>
@@ -54,7 +54,7 @@
         </div>
         </article>
 
-      <article data-lt-slide id="slide-brainstorming" class="content column" style="background-color: #fad45f; display: none">
+      <article data-lt-slide id="slide-brainstorming" class="content column" style="background-color: #fad45f;">
         <div>
           <section>
             <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #fad45f">Brainstrorm!</h1>
@@ -65,7 +65,7 @@
         </div>
       </article>
 
-      <article data-lt-slide="optional" id="slide-extra-help-interactivity" class="content column" style="background-color: #fad45f; display: none">
+      <article data-lt-slide="optional" id="slide-extra-help-interactivity" class="content column" style="background-color: #fad45f;">
         <div>
           <section>
             <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #fad45f">Extra help on interactivity</h1>
@@ -93,6 +93,10 @@
           </section>
         </div>
       </article>
+      <menu id="history-actions">
+        <a href="#" class="pe-7s-angle-left-circle" id="history-prev"></a>
+        <a href="#next" class="pe-7s-angle-right-circle" id="history-next"></a>
+      </menu>
     </main>
 
     <menu id="topic-actions" style="display: none">
@@ -121,7 +125,7 @@
 
     <menu id="actions">
       <div id="right-buttons">
-        <a href="#" class="pe-7s-monitor"></a>
+        <a href="#" class="pe-7s-monitor" id="show-latest"></a>
       </div>
       <a href="#" class="pe-7s-map" id="show-history"></a>
     </menu>
