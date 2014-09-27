@@ -31,6 +31,9 @@ io.on('connection', function(socket){
 
   function notify(id, type, item, val, err, tell) {
     if (err === null && tell) {
+      if (tell.length === 1 && tell[0] === '*') {
+        tell = ['audience', 'presenter', 'projector'];
+      }
       tell.forEach(function(channel) {
         var msg = {cmd: 'up', id: id, type: type, item: item, val: val};
         console.log('notify', channel, msg);
