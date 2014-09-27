@@ -49,3 +49,9 @@ article.title li span {
     line-height: 1.2em;
     display: inline-block;
 }
+
+article.content img.fullscreen {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
