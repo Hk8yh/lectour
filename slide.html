@@ -18,33 +18,6 @@
     slides
     ===============================================================================================
     -->
-    <!--
-    <div id="slides">
-      <div id="slide-1" class="step">
-        <p>Hello! My name is jmpress.js... <span id="p1" class="help"></span></p>
-      </div>
-      <div id="slide-2" class="step" data-x="1000">
-        <ul>
-          <li>Some bullet points</li>
-          <li>Some bullet points</li>
-        </ul>
-      </div>
-      <div id="slide-3" class="step" data-x="2000">
-        <p>Poll: what is your favourite programming language?</p>
-        <ul id="poll-fav-language" data-lt-multichoice>
-          <li>C</li>
-          <li>C++</li>
-          <li>Java</li>
-          <li>JavaScript</li>
-          <li>Ruby</li>
-          <li>Python</li>
-        </ul>
-      </div>
-      <div id="slide-4" class="step" data-x="3000">
-        <p>but that is the point. This is a simple example.</p>
-      </div>
-    </div>
-    -->
     <main id="slides">
       <article data-lt-slide id="slide-title" class="title right" style="background-image: url(/images/sh5.jpg)">
         <section>
@@ -79,6 +52,17 @@
             </ol>
           </section>
         </div>
+        </article>
+
+      <article data-lt-slide id="slide-brainstorming" class="content column" style="background-color: #fad45f; display: none">
+        <div>
+          <section>
+            <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #fad45f">Brainstrorm!</h1>
+          </section>
+          <section>
+            <div data-lt-brainstorm id="slide-brainstorming-eg0"></div>
+          </section>
+        </div>
       </article>
 
       <article data-lt-slide="optional" id="slide-extra-help-interactivity" class="content column" style="background-color: #fad45f; display: none">
@@ -88,6 +72,24 @@
           </section>
           <section>
             <p>Some content here</p>
+          </section>
+        </div>
+      </article>
+
+      <article data-lt-slide id="slide-lang" class="content column" style="background-color: #fad45f; display: none">
+        <div>
+          <section>
+            <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #fad45f">Poll: Fave programming language?</h1>
+          </section>
+          <section>
+            <ul id="poll-fav-language" data-lt-multichoice data-lt-addable>
+              <li>C</li>
+              <li>C++</li>
+              <li>Java</li>
+              <li>JavaScript</li>
+              <li>Ruby</li>
+              <li>Python</li>
+            </ul>
           </section>
         </div>
       </article>
@@ -114,8 +116,12 @@
     javascript
     ===============================================================================================
     -->
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/js/d3.layout.cloud.js"></script>
+
     <script type="text/javascript" src="/js/lectour.js"></script>
     <script type="text/javascript" src="/js/slide.js"></script>
   </body>
