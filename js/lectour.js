@@ -80,6 +80,9 @@ lectour.init = function(mode) {
     event.preventDefault();
     $('body').addClass('show-history');
     showHideHistoryNavButtons();
+    setTimeout(function() {
+      $('#actions').hide();
+    }, 500);
   });
 
   $('main article').click(function() {
@@ -87,6 +90,7 @@ lectour.init = function(mode) {
 
     if (lectour.mode === 'audience') {
       if ($('body').hasClass('show-history')) {
+        $('#actions').show();
         $('body').removeClass('show-history');
       }
     }
@@ -112,6 +116,7 @@ lectour.init = function(mode) {
     if (lectour.slideNum == (lectour.slideIDs.length - 1))
       return;
     var nextSlide = $('#' + lectour.slideIDs[lectour.slideNum + 1]);
+    console.log(nextSlide);
     nextSlide.addClass('current');
     $('#' + lectour.slideIDs[lectour.slideNum]).removeClass('current');
     lectour.slideNum += 1;
@@ -124,12 +129,15 @@ lectour.init = function(mode) {
       return;
     var prevSlide = $('#' + lectour.slideIDs[lectour.slideNum - 1]);
     prevSlide.addClass('current');
+    console.log(prevSlide);
     $('#' + lectour.slideIDs[lectour.slideNum]).removeClass('current');
     lectour.slideNum -= 1;
     showHideHistoryNavButtons();
   });
 
   $('#show-latest').click(function(event) {
+    if ($('body').hasClass('show-history'))
+      return;
     event.preventDefault();
     $('article.current').removeClass('current');
     $('#' + lectour.slideIDs[lectour.slideIDs.length - 1]).addClass('current');

@@ -1,6 +1,7 @@
 html {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 
@@ -132,3 +133,12 @@ article.content p {
     overflow: hidden;
     text-align: center;
 }
+
+#poll-love-ssh, #poll-hate-lectures {
+width: 100%
+}
+
+#poll-hate-lectures li, #poll-love-ssh li {
+  padding-right: 640px;
+}
+
