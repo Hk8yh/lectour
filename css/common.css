@@ -6,16 +6,28 @@ article {
     left: 0px;
     background-repeat: no-repeat;
     background-size: cover;
+    display: none;
+}
+
+article.current {
+    display: block;
 }
 
 a {
     text-decoration: none;
 }
 
-h1 {
+h1, h2 {
     font-family: "GothamBold", Gotham, serif;
     font-weight: normal;
+}
+
+h1 {
     line-height: 1.3em;
+}
+
+.tour {
+    color: #777;
 }
 
 article.title h1 {

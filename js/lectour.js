@@ -154,6 +154,9 @@ lectour.init = function(mode) {
   // discover the set of slides
   lectour.discoverSlides();
 
+  // add existing options from Redis to the slides
+  lectour.initPolls();
+
   // subscribe to the appropriate channel.
   lectour.sub(mode);
 
@@ -207,6 +210,10 @@ lectour.hitems = function(sel, type) {
   lectour.send('hitems', sel, type);
 };
 
+lectour.hiter = function(sel, type) {
+  lectour.send('hiter', sel, type);
+};
+
 
 // ==========================================================================
 // slide movement
@@ -250,6 +257,11 @@ lectour.discoverSlides = function() {
     lectour.slideNum = 0;
 };
 
+lectour.initPolls = function() {
+  $('[data-lt-addable]').each(function(i, node) {
+    lectour.hiter('#' + node.id, 'poll');
+  });
+};
 
 lectour.checkHelpThreshold = function(count, helpSlideID) {
   // If the help counter is greater than some arbitrary threshold, enable the
