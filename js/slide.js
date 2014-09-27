@@ -22,19 +22,54 @@ $(function() {
   $('[data-lt-multichoice]').each(function(i, node) {
     if (!node.id || lectour.mode !== 'audience')
       return;
-    $('li', node).each(function(j, li) {
+
+    function registerToVote(j, li) {
       var $li = $(li);
       var onClick = function(event) {
-        var sel = '#' + node.id + ' [data-lt-multichoice-option=' + j + ']';
-        lectour.hincr(sel, 'multichoice', j, ['presenter']);
+        $li.off('click', onClick);
         $(this).off('click', onClick);
+        var sel = '#' + node.id + ' [data-lt-multichoice-option="' + j + '"]';
+        lectour.hinc(sel, 'multichoice', j, ['presenter']);
       };
       $li
         .attr('data-lt-multichoice-option', j)
         .on('click', onClick);
-    });
+    }
+
+    $('li', node).each(registerToVote);
   });
 
+  $('[data-lt-addable]').each(function(i, node) {
+    console.log('lt-addable', node);
+
+    var $text = $('<input type="text" />');
+    var $submit = $('<input type="submit" />');
+    var $li = $('<li class="lt-added"></li>');
+    $li.append($text);
+    $li.append($submit);
+    $(node).append($li);
+
+    function registerToVote(j, li) {
+      var $li = $(li);
+      var onClick = function(event) {
+        $li.off('click', onClick);
+        var sel = '#' + node.id + ' [data-lt-multichoice-option="' + j + '"]';
+        lectour.hinc(sel, 'multichoice', j, ['presenter']);
+      };
+      $li
+        .attr('data-lt-multichoice-option', j)
+        .on('click', onClick);
+    }
+
+    var onAddClick = function(event) {
+      $submit.off('click', onAddClick);
+      var option = $text.val().toLowerCase();
+      $li.html('');
+      registerToVote(option, $li);
+    };
+
+    $submit.on('click', onAddClick);
+  });
 
   // ==========================================================================
   // responding to events
@@ -53,6 +88,10 @@ $(function() {
       $clicker = $(this);
     $clicker.attr('data-lt-help-count', value);
     lectour.checkHelpThreshold(value, $(this).data('lt-help'));
+  });
+
+  $('body').on('lt:up:survey', '[data-lt-survey-type="list"]', function(event, data, value) {
+    console.log('survey', data, value);
   });
 
   $('#slides').on('lt:audience:goto lt:projector:goto', function(event, slide) {
