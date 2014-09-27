@@ -4,18 +4,20 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var redis = require('redis');
 
+var root = 'slide.html';
+
 app.use(express.static('.'));
 
 app.get('/audience', function(req, res){
-  res.sendFile('slide.html', {root: '.'});
+  res.sendFile(root, {root: '.'});
 });
 
 app.get('/presenter', function(req, res){
-  res.sendFile('slide.html', {root: '.'});
+  res.sendFile(root, {root: '.'});
 });
 
 app.get('/projector', function(req, res){
-  res.sendFile('slide.html', {root: '.'});
+  res.sendFile(root, {root: '.'});
 });
 
 io.on('connection', function(socket){
