@@ -16,13 +16,57 @@ lectour.init = function(mode) {
   $('body').append($('<link rel="stylesheet" href="/css/' + mode + '.css">'));
 
   // bind top-level events
-  $('#show-question').click(function(event) {
-    event.preventDefault();
-    $('#question textarea').val('');
-    $('#question').fadeIn();
+  var targetTopic = null;
+
+  function closeTopicActions() {
+    if (!targetTopic)
+      return;
+    targetTopic.removeClass('tapped');
+    $('#topic-actions').fadeOut();
+    targetTopic = null;
+  }
+
+  $('article.content ol li.topic').click(function(event) {
+    if ($('body').hasClass('show-history'))
+      return;
+
+    var topic = $(this);
+    if (targetTopic)
+      targetTopic.removeClass('tapped');
+    topic.addClass('tapped');
+    
+    $('#topic-actions').css('top', topic.position().top + 100);
+    $('#topic-actions').css('height', topic.height());
+    $('#topic-actions').fadeIn();
+
+    targetTopic = topic;
+    event.stopImmediatePropagation();
   });
 
-  $('#hide-question').click(function(event) {
+  var voted = {};
+  $('#help-topic').click(function(event) {
+    var id = targetTopic[0].id;
+    if (!voted[id])
+      lectour.inc('#' + targetTopic[0].id, 'help', ['*']);
+    closeTopicActions();
+    voted[id] = true;
+  });
+
+  $('#show-questions').click(function(event) {
+    $('#question textarea').val('');
+    $('#question').fadeIn();
+    closeTopicActions();
+  });
+
+  $('#pin-topic').click(function(event) {
+
+  });
+
+  $('article, #actions').on('click', function(event) {
+    closeTopicActions();
+  });
+
+  $('#hide-questions').click(function(event) {
     event.preventDefault();
     $('#question').fadeOut();
   });
