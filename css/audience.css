@@ -42,43 +42,19 @@ html {
     background-color: white;
     box-shadow: 0px 0px 6px rgba(0,0,0,0.2);
     position: absolute;
-    bottom: 45px;
+    bottom: 5px;
     left: 5px;
     right: 5px;
-    height: 90px;
+    top: 100px;
+    z-index: 2;
 }
-
-    #question:after, #question:before {
-        top: 100%;
-        right: 5px;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-        z-index: 4;
-    }
-
-    #question:after {
-        border-color: rgba(255, 255, 255, 0);
-        border-top-color: #fff;
-        border-width: 10px;
-        margin-left: -10px;
-    }
-
-    #question:before {
-        border-color: rgba(229, 229, 229, 0);
-        border-top-color: #e5e5e5;
-        border-width: 11px;
-        margin-left: -11px;
-    }
 
     #question > div {
         position: absolute;
         top: 10px;
         left: 15px;
         right: 20px;
+        height: 34px;
     }
 
     #question textarea {
@@ -89,10 +65,10 @@ html {
     }
 
     #question menu {
-        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
         padding: 10px 15px;
         position: absolute;
-        bottom: 0px;
+        top: 55px;
         left: 0px;
         right: 0px;
     }
@@ -107,6 +83,45 @@ html {
             float: right;
             font-family: "GothamMedium", Gotham, serif;
         }
+
+    #question ul {
+        position: absolute;
+        top: 92px;
+        padding: 0px 20px;
+        overflow: auto;
+        right: 0px;
+        left: 0px;
+        bottom: 0px;
+        background-color: #fafafa;
+        font-family: "GothamLight", Gotham, serif;
+    }
+
+        #question ul li {
+            padding: 10px 0px;
+            border-bottom: 1px dotted #ddd;
+            min-height: 48px;
+        }
+
+            #question ul li a {
+                display: block;
+                float: left;
+                color: #333;
+                font-size: 10px;
+                background-color: #eee;
+                padding: 10px;
+            }
+
+                #question ul li a span {
+                    display: block;
+                    font-size: 14px;
+                    margin-bottom: 4px;
+                }
+
+            #question ul li p {
+                padding-left: 45px;
+                font-size: 14px;
+                padding-top: 5px;
+            }
 
 /* history */
 main {
@@ -138,8 +153,7 @@ main {
 #topic-actions {
     position: absolute;
     height: 30px;
-    top: 55px;
-    left: 10px;
+    left: 0px;
     display: table;
     width: 100%;
     table-layout: fixed;

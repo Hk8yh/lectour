@@ -29,11 +29,6 @@
                                 <h1 style="color: #fff">Interactivity</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi felis, suscipit id vestibulum at, commodo sed urna. Phasellus cursus auctor felis, ut finibus velit bibendum in.</p>
                             </li>
-                            <menu id="topic-actions" style="display: none">
-                                <a href="#"><span class="pe-7s-light" id="more-topic"></span>More</a>
-                                <a href="#"><span class="pe-7s-comment" id="show-questions"></span>Question</a>
-                                <a href="#"><span class="pe-7s-pin" id="pin-topic"></span>Pin</a>
-                            </menu>
                             <li class="topic topic-engagement">
                                 <h1 style="color: #fff">Engagement</h1>
                                 <p>Vestibulum ac augue leo. Sed finibus non libero non commodo. Integer elementum risus vitae neque tincidunt tristique. Praesent blandit, nisi et malesuada placerat, nibh ipsum pretium diam, nec fermentum velit ex in felis.</p>
@@ -48,12 +43,28 @@
             </article>
         </main>
 
+        <menu id="topic-actions" style="display: none">
+            <a href="#"><span class="pe-7s-light" id="more-topic"></span>More</a>
+            <a href="#"><span class="pe-7s-comment" id="show-questions"></span>Question</a>
+            <a href="#"><span class="pe-7s-pin" id="pin-topic"></span>Pin</a>
+        </menu>
+
         <div id="question" style="display: none">
             <div><textarea></textarea></div>
             <menu>
                 <a href="#" id="hide-question">Cancel</a>
                 <a href="#" id="submit-question">Submit</a>
             </menu>
+            <ul>
+                <li>
+                    <a href="#"><span class="pe-7s-like2"></span>10</a>
+                    <p>How do you do this?</p>
+                </li>
+                <li>
+                    <a href="#"><span class="pe-7s-like2"></span>2</a>
+                    <p>Another question</p>
+                </li>
+            </ul>
         </div>
 
         <menu id="actions">
@@ -83,17 +94,24 @@
 
             var targetTopic = null;
 
+            function closeTopicActions() {
+                if (!targetTopic)
+                    return;
+                targetTopic.removeClass('tapped');
+                $('#topic-actions').fadeOut();
+                targetTopic = null;
+            }
+
             $('article.content ol li.topic').click(function(event) {
                 if ($('body').hasClass('show-history'))
                     return;
-                
+
                 var topic = $(this);
-                var section = topic.closest('section');
                 if (targetTopic)
                     targetTopic.removeClass('tapped');
                 topic.addClass('tapped');
                 
-                $('#topic-actions').css('top', topic.position().top + section.scrollTop());
+                $('#topic-actions').css('top', topic.position().top + 100);
                 $('#topic-actions').css('height', topic.height());
                 $('#topic-actions').fadeIn();
 
@@ -106,7 +124,9 @@
             });
 
             $('#show-questions').click(function(event) {
-
+                $('#question textarea').val('');
+                $('#question').fadeIn();
+                closeTopicActions();
             });
 
             $('#pin-topic').click(function(event) {
@@ -114,17 +134,7 @@
             });
 
             $('article, #actions').on('click', function(event) {
-                if (!targetTopic)
-                    return;
-                targetTopic.removeClass('tapped');
-                $('#topic-actions').fadeOut();
-                targetTopic = null;
-            });
-
-            $('#show-question').click(function(event) {
-                event.preventDefault();
-                $('#question textarea').val('');
-                $('#question').fadeIn();
+                closeTopicActions();
             });
 
             $('#hide-question').click(function(event) {
