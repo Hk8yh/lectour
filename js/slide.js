@@ -35,6 +35,55 @@ $(function() {
     });
   });
 
+  $('[data-lt-brainstorm]').each(function(i, el) {
+    if (!el.id)
+      return;
+    var tags = {
+      'Hello': 1,
+      'world': 3,
+      'normally': 3,
+      'you': 2,
+      'want': 5,
+      'more': 5,
+      'words': 1,
+      'than': 3,
+      'this': 1,
+    };
+    var maxFreq = 0;
+    for (var tag in tags)
+      maxFreq = Math.max(maxFreq, tags[tag]);
+
+    var fill = d3.scale.category20();
+    function draw(tags) {
+      d3.select('#' + el.id).append('svg')
+          .attr('width', 300)
+          .attr('height', 300)
+        .append('g')
+          .attr('transform', 'translate(150,150)')
+        .selectAll('text')
+          .data(tags)
+        .enter().append('text')
+          .style('font-size', function(d) { return d.size + 'px'; })
+          .style('font-family', 'Impact')
+          .style('fill', function(d, i) { return fill(i); })
+          .attr('text-anchor', 'middle')
+          .attr('transform', function(d) {
+            return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')';
+          })
+          .text(function(d) { return d.text; });
+    }
+    d3.layout.cloud()
+      .size([300, 300])
+      .words(Object.keys(tags).map(function(tag) {
+        return {text: tag, size: 20 + (90 * (tags[tag]/maxFreq))};
+      }))
+      .padding(5)
+      .rotate(function() { return ~~(Math.random() * 2) * 90; })
+      .font('Impact')
+      .fontSize(function(d) { return d.size; })
+      .on('end', draw)
+      .start();
+  });
 
   // ==========================================================================
   // responding to events
