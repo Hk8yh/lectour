@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/common.css">
   </head>
-  <body class="show-history">
+  <body class="">
     <!--
     ===============================================================================================
     slides
@@ -65,24 +65,13 @@
         </div>
       </article>
 
-      <article data-lt-slide="optional" id="slide-extra-help-interactivity" class="content column" style="background-color: #fad45f;">
-        <div>
-          <section>
-            <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #fad45f">Extra help on interactivity</h1>
-          </section>
-          <section>
-            <p>Some content here</p>
-          </section>
-        </div>
-      </article>
-
       <article data-lt-slide id="slide-lang" class="content column" style="background-color: #fad45f; display: none">
         <div>
           <section>
             <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #fad45f">Poll: Fave programming language?</h1>
           </section>
           <section>
-            <ul id="poll-fav-language" data-lt-multichoice data-lt-addable>
+            <ul id="poll-fav-language" data-lt-poll data-lt-addable>
               <li>C</li>
               <li>C++</li>
               <li>Java</li>
@@ -93,6 +82,18 @@
           </section>
         </div>
       </article>
+
+      <article data-lt-slide="optional" id="slide-extra-help-interactivity" class="content column" style="background-color: #fad45f; display: none">
+        <div>
+          <section>
+            <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #fad45f">Extra help on interactivity</h1>
+          </section>
+          <section>
+            <p>Some content here</p>
+          </section>
+        </div>
+      </article>
+
       <menu id="history-actions">
         <a href="#" class="pe-7s-angle-left-circle" id="history-prev"></a>
         <a href="#next" class="pe-7s-angle-right-circle" id="history-next"></a>

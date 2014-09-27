@@ -136,12 +136,12 @@ io.on('connection', function(socket){
     });
   });
 
-  socket.on('hincr', function(id, type, item, tell) {
+  socket.on('hinc', function(id, type, item, tell) {
     var key = id + ':' + type;
-    console.log('socket:hincr', key, item, tell);
+    console.log('socket:hinc', key, item, tell);
 
     client.hincrby(key, item, 1, function(err, reply) {
-      console.log('redis:hincr', key, item, 1, err, reply);
+      console.log('redis:hinc', key, item, 1, err, reply);
       notify(id, type, item, reply, err, tell);
     });
   });

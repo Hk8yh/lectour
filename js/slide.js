@@ -5,25 +5,20 @@ $(function() {
   // ==========================================================================
   // user actions on slides
   // ==========================================================================
-  $('[data-lt-multichoice]').each(function(i, node) {
-    if (!node.id || lectour.mode !== 'audience')
+  $('[data-lt-help]').each(function(i, el) {
+    if (lectour.mode !== 'audience')
       return;
-
-    function registerToVote(j, li) {
-      var $li = $(li);
-      var onClick = function(event) {
-        $li.off('click', onClick);
-        $(this).off('click', onClick);
-        var sel = '#' + node.id + ' [data-lt-multichoice-option="' + j + '"]';
-        lectour.hinc(sel, 'multichoice', j, ['presenter']);
-      };
-      $li
-        .attr('data-lt-multichoice-option', j)
-        .on('click', onClick);
-    }
-
-    $('li', node).each(registerToVote);
+    var $el = $(el);
+    var $clicker = $('h1', $el);
+    if ($clicker.size() !== 1)
+      $clicker = $el;
+    var onClick = function(event) {
+      lectour.inc('#' + el.id, 'help', ['*']);
+      $(this).addClass('clicked').off('click', onClick);
+    };
+    $clicker.on('click', onClick);
   });
+
 
   $('[data-lt-brainstorm]').each(function(i, el) {
     if (!el.id)
@@ -75,37 +70,50 @@ $(function() {
       .start();
   });
 
-  $('[data-lt-addable]').each(function(i, node) {
-    console.log('lt-addable', node);
-
-    var $text = $('<input type="text" />');
-    var $submit = $('<input type="submit" />');
-    var $li = $('<li class="lt-added"></li>');
-    $li.append($text);
-    $li.append($submit);
-    $(node).append($li);
-
-    function registerToVote(j, li) {
-      var $li = $(li);
-      var onClick = function(event) {
-        $li.off('click', onClick);
-        var sel = '#' + node.id + ' [data-lt-multichoice-option="' + j + '"]';
-        lectour.hinc(sel, 'multichoice', j, ['presenter']);
-      };
-      $li
-        .attr('data-lt-multichoice-option', j)
-        .on('click', onClick);
-    }
-
-    var onAddClick = function(event) {
-      $submit.off('click', onAddClick);
-      var option = $text.val().toLowerCase();
-      $li.html('');
-      registerToVote(option, $li);
+  function registerToVote(ul, li) {
+    var $li = $(li);
+    var option = $li.text().toLowerCase();
+    var onClick = function(event) {
+      $(this).off('click', onClick);
+      var sel = '#' + ul.id;  // + ' [data-lt-poll-option="' + option + '"]';
+      lectour.hinc(sel, 'poll', option, ['presenter', 'projector']);
     };
+    $li.attr('data-lt-poll-option', option);
+    if (lectour.mode === 'audience')
+      $li.on('click', onClick);
+  }
 
-    $submit.on('click', onAddClick);
+  $('[data-lt-poll]').each(function(i, node) {
+    if (!node.id)
+      return;
+
+    $('li', node).each(function(j, li) {
+      registerToVote(node, li);
+    });
   });
+
+
+  $('[data-lt-addable]').each(function(i, el) {
+    if (lectour.mode !== 'audience')
+      return;
+
+    var $text = $('<input type="text" x-webkit-speech/>');
+    var $submit = $('<input type="submit" />');
+    var $form = $('<form action="#" method="POST" class="lt-added"></form>');
+    $form.append($text).append($submit);
+    $(el).append($form);
+
+    var onSubmit = function(event) {
+      var option = $text.val().toLowerCase();
+      var $li = $('<li></li>').text(option).appendTo($(el));
+      registerToVote(el, $li);
+      $li.trigger('click');
+      $form.off('submit', onSubmit).remove();
+      return false;
+    };
+    $form.on('submit', onSubmit);
+  });
+
 
   // ==========================================================================
   // responding to events
@@ -114,8 +122,14 @@ $(function() {
     console.log('lt:up:comment', item, value);
   });
 
-  $('body').on('lt:up:multichoice', '[data-lt-multichoice-option]', function(event, data, value) {
-    $(this).attr('data-lt-multichoice-count', value);
+  $('body').on('lt:up:poll', '[data-lt-poll]', function(event, option, value) {
+    var $li = $('[data-lt-poll-option="' + option + '"]', $(this));
+    if ($li.size() === 0)
+      $('<li></li>')
+        .attr('data-lt-poll-option', option)
+        .text(option)
+        .appendTo($(this));
+    $('[data-lt-poll-option="' + option + '"]', $(this)).attr('data-lt-poll-count', value);
   });
 
   $('body').on('lt:up:help', '[data-lt-help]', function(event, item, value) {
