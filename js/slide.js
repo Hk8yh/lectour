@@ -138,6 +138,7 @@ $(function() {
       $clicker = $(this);
     $clicker.attr('data-lt-help-count', value);
     lectour.checkHelpThreshold(value, $(this).data('lt-help'));
+    lectour.discoverSlides();
   });
 
   $('body').on('lt:up:survey', '[data-lt-survey-type="list"]', function(event, data, value) {
@@ -146,5 +147,10 @@ $(function() {
 
   $('#slides').on('lt:audience:goto lt:projector:goto', function(event, slide) {
     lectour.moveToSlideID(slide);
+  });
+
+  $('#slides').on('lt:audience:discover lt:presenter:discover lt:projector:discover', function(event) {
+    console.log('discover');
+    lectour.discoverSlides();
   });
 });

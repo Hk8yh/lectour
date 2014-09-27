@@ -6,7 +6,7 @@ lectour = {
   socket: null,
 };
 
-lectour.HELP_THRESHOLD = 10;  // hardcoded for lols.
+lectour.HELP_THRESHOLD = 4;  // hardcoded for lols.
 
 lectour.init = function(mode) {
   lectour.mode = mode;
@@ -266,8 +266,11 @@ lectour.initPolls = function() {
 lectour.checkHelpThreshold = function(count, helpSlideID) {
   // If the help counter is greater than some arbitrary threshold, enable the
   // extra help slide, if one exists.
+  console.log(count, helpSlideID);
   if (count >= lectour.HELP_THRESHOLD && helpSlideID) {
     $('#' + helpSlideID).data('lt-slide', '');
-    lectour.discoverSlides();
+    console.log('sending discover');
+    lectour.pub(['audience', 'presenter', 'projector'], 'discover');
+    //lectour.discoverSlides();
   }
 };
