@@ -148,11 +148,24 @@ io.on('connection', function(socket){
 
   socket.on('hitems', function(id, type) {
     var key = id + ':' + type;
-    console.log('socket:hget', key);
+    console.log('socket:hitems', key);
 
     client.hgetall(key, function(err, reply) {
       console.log('redis:hgetall', key, err, reply);
       socket.emit('up', id, type, null, reply);
+    });
+  });
+
+  socket.on('hiter', function(id, type) {
+    var key = id + ':' + type;
+    console.log('socket:hiter', key);
+
+    client.hgetall(key, function(err, reply) {
+      console.log('redis:hgetall', key, err, reply);
+      socket.emit('up', id, type, null, reply);
+      for(item in reply) {
+        socket.emit('up', id, type, item, reply[item]);
+      }
     });
   });
 

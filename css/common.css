@@ -12,10 +12,17 @@ a {
     text-decoration: none;
 }
 
-h1 {
+h1, h2 {
     font-family: "GothamBold", Gotham, serif;
     font-weight: normal;
+}
+
+h1 {
     line-height: 1.3em;
+}
+
+.tour {
+    color: #777;
 }
 
 article.title h1 {
