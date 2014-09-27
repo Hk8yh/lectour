@@ -334,3 +334,7 @@ article.column section:last-child h1 {
     overflow: hidden;
     text-align: center;
 }
+
+img.projector-only {
+    display: none;
+}
