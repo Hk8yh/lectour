@@ -43,8 +43,13 @@ lectour.init = function(mode) {
     event.stopImmediatePropagation();
   });
 
-  $('#more-topic').click(function(event) {
-
+  var voted = {};
+  $('#help-topic').click(function(event) {
+    var id = targetTopic[0].id;
+    if (!voted[id])
+      lectour.inc('#' + targetTopic[0].id, 'help', ['*']);
+    closeTopicActions();
+    voted[id] = true;
   });
 
   $('#show-questions').click(function(event) {

@@ -5,20 +5,6 @@ $(function() {
   // ==========================================================================
   // user actions on slides
   // ==========================================================================
-  $('[data-lt-help]').each(function(i, el) {
-    if (lectour.mode !== 'audience')
-      return;
-    var $el = $(el);
-    var $clicker = $('h1', $el);
-    if ($clicker.size() !== 1)
-      $clicker = $el;
-    var onClick = function(event) {
-      lectour.inc('#' + el.id, 'help', ['*']);
-      $(this).addClass('clicked').off('click', onClick);
-    };
-    $clicker.on('click', onClick);
-  });
-
   $('[data-lt-multichoice]').each(function(i, node) {
     if (!node.id || lectour.mode !== 'audience')
       return;
