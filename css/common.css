@@ -6,6 +6,11 @@ article {
     left: 0px;
     background-repeat: no-repeat;
     background-size: cover;
+    display: none;
+}
+
+article.current {
+    display: block;
 }
 
 a {
