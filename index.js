@@ -7,15 +7,15 @@ var redis = require('redis');
 app.use(express.static('.'));
 
 app.get('/audience', function(req, res){
-  res.sendfile('index.html');
+  res.sendFile('slide.html', {root: '.'});
 });
 
 app.get('/presenter', function(req, res){
-  res.sendfile('index.html');
+  res.sendFile('slide.html', {root: '.'});
 });
 
 app.get('/projector', function(req, res){
-  res.sendfile('index.html');
+  res.sendFile('slide.html', {root: '.'});
 });
 
 io.on('connection', function(socket){

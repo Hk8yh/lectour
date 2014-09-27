@@ -3,18 +3,6 @@ $(function() {
   lectour.init(mode, '#slides');
 
   // ==========================================================================
-  // slide nagivation
-  // ==========================================================================
-  $('#slides').jmpress();
-
-  $('.step').on('enterStep', function(event) {
-    if (lectour.mode === 'presenter') {
-      lectour.pub(['audience', 'projector'], 'goto', event.target.id);
-    }
-  });
-
-
-  // ==========================================================================
   // user actions on slides
   // ==========================================================================
   $('.help').each(function(i, node) {
@@ -53,11 +41,7 @@ $(function() {
     $(event.target).text(value);
   });
 
-  $('#slides').on('lt:audience:goto', function(event, slide) {
-    $('#slides').jmpress('goTo', '#' + slide);
-  });
-
-  $('#slides').on('lt:presenter:goto', function(event, slide) {
-    $('#slides').jmpress('goTo', '#' + slide);
+  $('#slides').on('lt:audience:goto lt:projector:goto', function(event, slide) {
+    lectour.moveToSlideID(slide);
   });
 });

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>lectour</title>
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <link rel="stylesheet" href="/fonts/pe-icon-7-stroke/font.css">
+    <link rel="stylesheet" href="/fonts/gotham/font.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/common.css">
+  </head>
+  <body>
+    <!--
+    ===============================================================================================
+    slides
+    ===============================================================================================
+    -->
+    <!--
+    <div id="slides">
+      <div id="slide-1" class="step">
+        <p>Hello! My name is jmpress.js... <span id="p1" class="help"></span></p>
+      </div>
+      <div id="slide-2" class="step" data-x="1000">
+        <ul>
+          <li>Some bullet points</li>
+          <li>Some bullet points</li>
+        </ul>
+      </div>
+      <div id="slide-3" class="step" data-x="2000">
+        <p>Poll: what is your favourite programming language?</p>
+        <ul id="poll-fav-language" data-lt-multichoice>
+          <li>C</li>
+          <li>C++</li>
+          <li>Java</li>
+          <li>JavaScript</li>
+          <li>Ruby</li>
+          <li>Python</li>
+        </ul>
+      </div>
+      <div id="slide-4" class="step" data-x="3000">
+        <p>but that is the point. This is a simple example.</p>
+      </div>
+    </div>
+    -->
+    <main id="slides">
+      <article id="slide-title" class="title right" style="background-image: url(/images/sh5.jpg)">
+        <section>
+          <h1><span class="pe-7s-map"></span>Lectour</h1>
+          <ul>
+            <li><span>James</span></li>
+            <li><span>Tim</span></li>
+            <li><span>Will</span></li>
+          </ul>
+        </section>
+      </article>
+
+      <article id="slide-aims" class="content column" style="background-color: #fad45f; display: none">
+        <div>
+          <section>
+            <h1 style="width: 270px; height: 270px; line-height: 270px; border-radius: 270px; border-top-color: #fad45f">Aims</h1>
+          </section>
+          <section>
+            <ol>
+              <li class="topic-interactivity">
+                <h1><aside><span></span><i class="pe-7s-check"></i></aside>Interactivity</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi felis, suscipit id vestibulum at, commodo sed urna. Phasellus cursus auctor felis, ut finibus velit bibendum in.</p>
+              </li>
+              <li class="topic-engagement">
+                <h1><aside><span></span><i class="pe-7s-check"></i></aside>Engagement</h1>
+                <p>Vestibulum ac augue leo. Sed finibus non libero non commodo. Integer elementum risus vitae neque tincidunt tristique. Praesent blandit, nisi et malesuada placerat, nibh ipsum pretium diam, nec fermentum velit ex in felis.</p>
+              </li>
+              <li class="topic-feedback">
+                <h1><aside><span></span><i class="pe-7s-check"></i></aside>Feedback</h1>
+                <p>Cras lacinia tortor id est volutpat molestie. Aenean a interdum arcu, ac interdum sem.</p>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </article>
+    </main>
+
+    <div id="question" style="display: none">
+      <div><textarea></textarea></div>
+      <menu>
+        <a href="#" id="hide-question">Cancel</a>
+        <a href="#" id="submit-question">Submit</a>
+      </menu>
+    </div>
+
+    <menu id="actions">
+      <div id="right-buttons">
+        <a href="#" class="pe-7s-light"></a>
+        <a href="#" class="pe-7s-comment" id="show-question"></a>
+      </div>
+      <a href="#" class="pe-7s-map" id="show-history"></a>
+    </menu>
+
+    <!--
+    ===============================================================================================
+    javascript
+    ===============================================================================================
+    -->
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/lectour.js"></script>
+    <script type="text/javascript" src="/js/slide.js"></script>
+  </body>
+</html>
