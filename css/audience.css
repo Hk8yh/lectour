@@ -131,19 +131,51 @@ main {
     bottom: 0px;
     left: 0px;
     background-color: #f6f8f8;
+    overflow: hidden;
 }
 
     main article {
         -webkit-transform: scale(1);
-        -webkit-transition: -webkit-transform 0.3s;
-        transition: -webkit-transform 0.3s;
-        transition: transform 0.3s;
+        -webkit-transition: -webkit-transform;
+        -webkit-transition: transform;
+        transition: transform;
+        -webkit-transition-duration: 0.5s;
         background-color: white !important;
+        width: 100%;
+        right: auto !important;
+        display: none;
+    }
+
+    article.current {
+        display: block;
     }
 
     body.show-history main article {
         -webkit-transform: scale(0.75);
+        transform: scale(0.75);
         box-shadow: 0px 0px 26px rgba(0,0,0,0.3);
+    }
+
+#history-actions {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    right: 40px;
+    z-index: 10;
+}
+
+body.show-history #history-actions {
+    display: block;
+}
+
+    #history-actions a {
+        font-size: 20px;
+        color: #333;
+    }
+
+    #history-actions a:last-child {
+        float: right;
     }
 
 

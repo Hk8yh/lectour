@@ -13,6 +13,10 @@ html {
     display: none;
 }
 
+#history-actions {
+    display: none;
+}
+
 
 /* slides */
 article section {
