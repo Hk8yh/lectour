@@ -74,7 +74,7 @@ $(function() {
     var $li = $(li);
     var option = $li.text().toLowerCase();
     var onClick = function(event) {
-      $(this).off('click', onClick);
+      $(this).off('click', onClick).removeAttr('data-lt-poll-option');
       var sel = '#' + ul.id;  // + ' [data-lt-poll-option="' + option + '"]';
       lectour.hinc(sel, 'poll', option, ['presenter', 'projector']);
     };

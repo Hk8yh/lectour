@@ -219,7 +219,7 @@ article.content li:first-child {
         font-size: 17px;
     }
 
-    article.content li p {
+    article.content {
         font-family: "GothamLight", Gotham, serif;
         font-size: 15px;
         line-height: 24px;
@@ -264,20 +264,41 @@ article.column section:last-child h1 {
     font-family: "GothamBook", Gotham, serif;
 }
 
+[data-lt-poll-option]:hover {
+    cursor: pointer;
+}
+
+[data-lt-poll-count]::after {
+    content: attr(data-lt-poll-count);
+    display: inline-block;
+    background-color: #933;
+    color: white;
+    border-radius: 22px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin-left: 8px;
+    font-family: "GothamBook", Gotham, serif;
+    overflow: hidden;
+    text-align: center;
+}
+
 [data-lt-help-count]::after {
-  content: attr(data-lt-help-count);
-  display: inline-block;
-  background-color: #933;
-  color: white;
-  border-radius: 22px;
-  width: 22px;
-  height: 22px;
-  box-sizing: border-box;
-  font-size: 12px;
-  margin-left: 8px;
-  font-family: "GothamBook", Gotham, serif;
-  position: relative;
-  top: -1px;
-  overflow: hidden;
-  text-align: center;
+    content: attr(data-lt-help-count);
+    display: inline-block;
+    background-color: #933;
+    color: white;
+    border-radius: 22px;
+    width: 22px;
+    height: 22px;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin-left: 8px;
+    font-family: "GothamBook", Gotham, serif;
+    position: relative;
+    top: -1px;
+    overflow: hidden;
+    text-align: center;
 }

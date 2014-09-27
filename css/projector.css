@@ -81,6 +81,13 @@ article.column section:first-child h1 {
 
 
 /* content */
+article.content {
+    font-size: 20px;
+    line-height: 40px;
+    font-family: "GothamMedium", Gotham, serif;
+    color: #333;
+}
+
 article.content ol li h1 {
     font-size: 60px;
     line-height: 120px;
@@ -96,3 +103,19 @@ article.content li p {
     display: none;
 }
 
+[data-lt-poll-count]::after {
+    content: attr(data-lt-poll-count);
+    display: inline-block;
+    background-color: #933;
+    color: white;
+    border-radius: 22px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin-left: 8px;
+    font-family: "GothamBook", Gotham, serif;
+    overflow: hidden;
+    text-align: center;
+}
