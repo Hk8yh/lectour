@@ -1,6 +1,6 @@
 $(function() {
   var mode = location.pathname.substr(1);
-  lectour.init(mode, '#slides');
+  lectour.init(mode);
 
   // ==========================================================================
   // user actions on slides
@@ -13,9 +13,8 @@ $(function() {
     if ($clicker.size() !== 1)
       $clicker = $el;
     var onClick = function(event) {
-      $(this).addClass('clicked');
       lectour.inc('#' + el.id, 'help', ['*']);
-      $(this).off('click', onClick);
+      $(this).addClass('clicked').off('click', onClick);
     };
     $clicker.on('click', onClick);
   });
@@ -26,9 +25,9 @@ $(function() {
     $('li', node).each(function(j, li) {
       var $li = $(li);
       var onClick = function(event) {
-        $li.off('click', onClick);
         var sel = '#' + node.id + ' [data-lt-multichoice-option=' + j + ']';
         lectour.hincr(sel, 'multichoice', j, ['presenter']);
+        $(this).off('click', onClick);
       };
       $li
         .attr('data-lt-multichoice-option', j)
@@ -48,8 +47,12 @@ $(function() {
     $(this).attr('data-lt-multichoice-count', value);
   });
 
-  $('.help').on('lt:up:help', function(event, item, value) {
-    $(event.target).text(value);
+  $('body').on('lt:up:help', '[data-lt-help]', function(event, item, value) {
+    var $clicker = $('h1', $(this));
+    if ($clicker.size() !== 1)
+      $clicker = $(this);
+    $clicker.attr('data-lt-help-count', value);
+    lectour.checkHelpThreshold(value, $(this).data('lt-help'));
   });
 
   $('#slides').on('lt:audience:goto lt:projector:goto', function(event, slide) {

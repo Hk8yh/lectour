@@ -6,7 +6,9 @@ lectour = {
   socket: null,
 };
 
-lectour.init = function(mode, sel) {
+lectour.HELP_THRESHOLD = 10;  // hardcoded for lols.
+
+lectour.init = function(mode) {
   lectour.mode = mode;
   lectour.socket = io();
 
@@ -61,17 +63,13 @@ lectour.init = function(mode, sel) {
   });
 
   // discover the set of slides
-  lectour.slideIDs = [];
-  $('> article', sel).each(function(i, slide) {
-    lectour.slideIDs.push(slide.id);
-  });
-  lectour.slideNum = 0;
+  lectour.discoverSlides();
 
   // subscribe to the appropriate channel.
   lectour.sub(mode);
 
   lectour.socket.on('do', function(channel, cmd, data) {
-    $(sel).trigger('lt:' + channel + ':' + cmd, data);
+    $('#slides').trigger('lt:' + channel + ':' + cmd, data);
   });
 
   lectour.socket.on('up', function(sel, type, item, value) {
@@ -121,6 +119,9 @@ lectour.hitems = function(sel, type) {
 };
 
 
+// ==========================================================================
+// slide movement
+// ==========================================================================
 lectour.moveSlideDelta = function(delta) {
   var nextSlideNum = (lectour.slideNum + lectour.slideIDs.length + delta) % lectour.slideIDs.length;
   $('#' + lectour.slideIDs[lectour.slideNum]).fadeOut(1000);
@@ -144,4 +145,28 @@ lectour.moveToSlideID = function(id) {
   var index =  lectour.slideIDs.indexOf(id);
   if (index !== -1)
     lectour.moveSlideDelta(index - lectour.slideNum);
+};
+
+
+// ==========================================================================
+// slide discovery
+// ==========================================================================
+lectour.discoverSlides = function() {
+  lectour.slideIDs = [];
+  $('#slides [data-lt-slide]').each(function(i, slide) {
+    if ($(slide).data('lt-slide') !== 'optional')
+      lectour.slideIDs.push(slide.id);
+  });
+  if (!lectour.slideNum)
+    lectour.slideNum = 0;
+};
+
+
+lectour.checkHelpThreshold = function(count, helpSlideID) {
+  // If the help counter is greater than some arbitrary threshold, enable the
+  // extra help slide, if one exists.
+  if (count >= lectour.HELP_THRESHOLD && helpSlideID) {
+    $('#' + helpSlideID).data('lt-slide', '');
+    lectour.discoverSlides();
+  }
 };
